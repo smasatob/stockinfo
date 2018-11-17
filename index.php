@@ -69,14 +69,14 @@ function stockInfo($stock,$metric) {
  $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.finbox.io/beta/data/batch",
+  CURLOPT_URL => "https://api.finbox.io/beta/data/".$stock."/".$metric,
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{ \"data\": { \"stock_price\": \"AAPL.asset_price_latest\" } }",
+  CURLOPT_CUSTOMREQUEST => "GET",
+  //CURLOPT_POSTFIELDS => "{ \"data\": { \"stock_price\": \"AAPL.asset_price_latest\" } }",
   CURLOPT_HTTPHEADER => array(
     "accept: application/json",
     "authorization: Bearer b9c4ab39495b3522fbf0593b5af2963e9f71d939",
