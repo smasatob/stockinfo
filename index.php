@@ -15,15 +15,15 @@ $metnum = stockInfo($stock,$metric);
  
  
     switch ($metric) {
-        case 'pricetoearnings':
+        case 'pe_ltm':
             $met = "P/E";
             break;
  
-        case 'evtoebit':
+        case 'ev_to_ebit_ltm':
             $met = "EV/EBIT";
             break;
          
-        case 'evtofcff':
+        case 'ev_to_fcf_ltm':
             $met = "EV/FCFF";
             break;
          
@@ -37,12 +37,12 @@ $metnum = stockInfo($stock,$metric);
             $metnum = number_format($metnum);
             break;
          
-         case 'marketcap':
+         case 'market_cap':
             $met = "Market Cap";
             $metnum = number_format($metnum);
             break;
          
-         case 'last_price':
+         case 'stock_price_latest':
             $met = "last price";
             $metnum = number_format($metnum);
             break;
