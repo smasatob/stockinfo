@@ -65,7 +65,7 @@ $outputtext = "The ".$met." for ".$stock." is ".$metnum;
 function stockInfo($stock,$metric) {
  
     //global $metric, $stock;
- /*  
+
  $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -100,7 +100,7 @@ if ($err) {
  
  return $data['value'];
      
-
+/*
     $ch = curl_init();
  
     curl_setopt($ch, CURLOPT_URL, "https://api.intrinio.com/data_point?identifier=".$stock."&item=".$metric);
@@ -120,7 +120,7 @@ if ($err) {
     $data = json_decode($json, true);
  
     return $data['value'];
- */
+
  
     $ch = curl_init();
  
@@ -145,7 +145,7 @@ if ($err) {
     $data = json_decode($json, true);
  
     return $data['value'];
- 
+ */
 }
  
  
