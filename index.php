@@ -65,7 +65,7 @@ $outputtext = "The ".$met." for ".$stock." is ".$metnum;
 function stockInfo($stock,$metric) {
  
     //global $metric, $stock;
-  
+ /*  
  $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -100,7 +100,7 @@ if ($err) {
  
  return $data['value'];
      
-/* 
+
     $ch = curl_init();
  
     curl_setopt($ch, CURLOPT_URL, "https://api.intrinio.com/data_point?identifier=".$stock."&item=".$metric);
@@ -121,6 +121,30 @@ if ($err) {
  
     return $data['value'];
  */
+ 
+    $ch = curl_init();
+ 
+    curl_setopt($ch, CURLOPT_URL, "https://api.finbox.io/beta/data/".$stock."/".$metric);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+ 
+    curl_setopt($ch, CURLOPT_HTTPHEADER => array(
+    "accept: application/json",
+    "authorization: Bearer b9c4ab39495b3522fbf0593b5af2963e9f71d939",
+    "content-type: application/json"
+  ));
+ 
+    $result = curl_exec($ch);
+    if (curl_errno($ch)) {
+        echo 'Error:' . curl_error($ch);
+    }
+    curl_close ($ch);
+ 
+ 
+    $json = $result;
+    $data = json_decode($json, true);
+ 
+    return $data['value'];
  
 }
  
