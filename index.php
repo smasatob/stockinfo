@@ -66,9 +66,41 @@ function stockInfo($stock,$metric) {
  
     //global $metric, $stock;
   
+ $curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => "https://api.finbox.io/beta/data/batch",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => "{ \"data\": { \"stock_price\": \"AAPL.asset_price_latest\" } }",
+  CURLOPT_HTTPHEADER => array(
+    "accept: application/json",
+    "authorization: Bearer b9c4ab39495b3522fbf0593b5af2963e9f71d939",
+    "content-type: application/json"
+  ),
+));
+
+$result = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $result;
+}
+
+  $json = $result;
+  $data = json_decode($json, true);
  
+ return $data['value'];
      
- 
+/* 
     $ch = curl_init();
  
     curl_setopt($ch, CURLOPT_URL, "https://api.intrinio.com/data_point?identifier=".$stock."&item=".$metric);
@@ -88,7 +120,7 @@ function stockInfo($stock,$metric) {
     $data = json_decode($json, true);
  
     return $data['value'];
- 
+ */
  
 }
  
