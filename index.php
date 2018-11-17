@@ -27,7 +27,7 @@ $metnum = stockInfo($stock,$metric);
             $met = "EV/FCFF";
             break;
          
-         case 'freecashflow':
+         case 'fcf_unlev':
             $met = "Free Cash Flow";
             $metnum = number_format($metnum);
             break;
@@ -57,7 +57,7 @@ $metnum = stockInfo($stock,$metric);
  
  
  
-$outputtext = "The ".$met." for ".$stock." is ".$metnum; 
+$outputtext = "The ".$met." for ".$stock." is $".$metnum; 
  
  
  
