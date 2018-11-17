@@ -98,7 +98,7 @@ if ($err) {
   $json = $result;
   $data = json_decode($json, true);
  
- return $data['value'];
+ return $data['data'];
      
 /*
     $ch = curl_init();
